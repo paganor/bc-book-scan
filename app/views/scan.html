@@ -1,0 +1,11 @@
+<ion-view view-title="all scans">
+  <ion-content>
+    <ion-list>
+      <ion-item
+      ng-repeat="scan in scans"
+      href="#/scan/{{scan.id}}">
+        <h2>{{scan.title}}</h2>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
