@@ -2,6 +2,4 @@
 /* global app:true */
 /* exported app */
 
-var app = angular.module('bc-book-scan',
-                        ['ionic',
-                         'ngCordova']);
+var app = angular.module('bc-book-scan', ['ionic', 'ngCordova', 'uuid4']);
