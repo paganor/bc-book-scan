@@ -1,11 +1,14 @@
-<ion-view view-title="all scans">
+<ion-view view-title="All Scans ({{scans.length}})">
   <ion-content>
-    <ion-list>
-      <ion-item
+    <div class="list">
+      <a
+      class="item item-avatar"
       ng-repeat="scan in scans"
       href="#/scan/{{scan.id}}">
+        <img src="http://bks0.books.google.com/books/content?id=xN5JAAAAYAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api" alt="image">
         <h2>{{scan.title}}</h2>
-      </ion-item>
-    </ion-list>
+        <p>May 2, 2015</p>
+      </a>
+    </div>
   </ion-content>
 </ion-view>
