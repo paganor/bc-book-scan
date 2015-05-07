@@ -1,5 +1,30 @@
-<ion-view view-title="scan view">
+<ion-view view-title="" ng-show="scan">
   <ion-content>
-    <h3>{{scan.title}}</h3>
+    <div class="list card">
+
+      <div class="item item-avatar">
+        <img ng-src="{{scan.volumeInfo.imageLinks.smallThumbnail}}">
+        <h3>{{scan.volumeInfo.title}}</h3>
+        <p>Scanned @ {{scan.scanTime | date:'medium'}}</p>
+      </div><!-- /item-header -->
+
+      <div class="row"><!-- picture -->
+        <div class="col col-center">
+          <center>
+            <img ng-src="{{scan.volumeInfo.imageLinks.thumbnail}}">
+          </center>
+        </div>
+      </div><!-- /picture -->
+      <div class="item item-body">
+        <h3>Authors: </h3><p>{{scan.volumeInfo.authors.toString()}}</p>
+        <h3>Published: </h3><p>{{scan.volumeInfo.publishedDate}}</p>
+        <h3>ISBN: </h3><p>{{scan.volumeInfo.industryIdentifiers | isbn}}</p>
+      </div>
+    </div><!-- /list card -->
   </ion-content>
+  <ion-footer-bar
+  align-title="center"
+  class="bar-balanced">
+    <h1 class="title">{{scan.price | currency}}</h1>
+  </ion-footer-bar>
 </ion-view>
