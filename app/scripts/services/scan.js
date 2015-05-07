@@ -3,27 +3,20 @@
 app.factory('scan', function($q, $http, uuid4) {
   var scan = {};
 
-  var _allScans = [
-    {'id': 1, 'title': 'object 1'},
-    {'id': 2, 'title': 'object 2'},
-    {'id': 3, 'title': 'object 3'},
-    {'id': 4, 'title': 'object 4'},
-    {'id': 5, 'title': 'object 5'},
-    {'id': 6, 'title': 'object 6'},
-  ];
+  var _allScans = [];
 
   scan.all = function() {
     return _allScans;
   };
 
-  scan.get = function(scanId) {
+  scan.get = function(uuid) {
     var deferred = $q.defer();
 
     var scan = {};
 
     for(var i in _allScans) {
       // if match, return
-      if(_allScans[i].id === scanId) {
+      if(_allScans[i].uuid === uuid) {
         scan = _allScans[i];
         deferred.resolve(scan);
       }
@@ -43,7 +36,7 @@ app.factory('scan', function($q, $http, uuid4) {
         newBook = data.items[0];
         newBook.scanTime = new Date().getTime();
         newBook.uuid = uuid4.generate();
-        _allScans.push(newBook);
+        _allScans.splice(0, 0, newBook);
         deferred.resolve(newBook);
       })
       .error(function(data, status) {
@@ -54,5 +47,22 @@ app.factory('scan', function($q, $http, uuid4) {
 
       return deferred.promise;
   };
+
+  scan.delete = function(item) {
+    var deferred = $q.defer();
+
+    var index = _allScans.indexOf(item);
+
+    // if item is found
+    if (index !== -1) {
+      _allScans.splice(index, 1);
+      deferred.resolve(_allScans);
+    } else {
+      deferred.reject('scan-not-found');
+    }
+
+    return deferred.promise;
+  };
+
   return scan;
 });

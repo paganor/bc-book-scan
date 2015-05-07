@@ -1,14 +1,20 @@
 <ion-view view-title="All Scans ({{scans.length}})">
   <ion-content>
-    <div class="list">
-      <a
-      class="item item-avatar"
-      ng-repeat="scan in scans"
-      href="#/scan/{{scan.id}}">
-        <img src="http://bks0.books.google.com/books/content?id=xN5JAAAAYAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api" alt="image">
-        <h2>{{scan.title}}</h2>
-        <p>May 2, 2015</p>
-      </a>
-    </div>
+    <ion-list
+    can-swipe="true">
+      <ion-item
+      class="item-avatar"
+      href="#/scan/{{scan.uuid}}"
+      ng-repeat="scan in scans">
+        <img ng-src="{{scan.volumeInfo.imageLinks.smallThumbnail}}" alt="image">
+        <h2>{{scan.volumeInfo.title}}</h2>
+        <p>{{scan.scanTime | date:'medium'}}</p>
+        <ion-option-button
+        class="button-assertive"
+        ng-click="delete(scan)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

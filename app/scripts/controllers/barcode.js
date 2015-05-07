@@ -18,10 +18,10 @@ app.controller('BarcodeCtrl', function($scope,
           });
       });
     } else {
-      console.log('starting scan..');
+      // console.log('starting scan..');
       scan.add('EAN_13', '9781607740551')
-        .then(function(newBook) {
-          console.log(newBook);
+        .then(function() {
+          // console.log(newBook);
         });
     }
   };

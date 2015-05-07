@@ -8,7 +8,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       'controller' : 'ScanCtrl'
     })
     .state('scanView', {
-      'url' : '/scan/:scanId',
+      'url' : '/scan/:scanUUID',
       'templateUrl' : 'views/scanView.html',
       'controller' : 'ScanViewCtrl'
     });
