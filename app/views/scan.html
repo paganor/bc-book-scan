@@ -1,5 +1,12 @@
-<ion-view view-title="All Scans ({{scans.length}})">
-  <ion-content>
+<ion-view view-title="All Scans">
+  <ion-content class="dark-bkg">
+    <div
+    ng-show="scans.length === 0"
+    class="card">
+      <div class="item item-text-wrap">
+        You have no scans! Scan to get started.
+      </div>
+    </div>
     <ion-list
     can-swipe="true">
       <ion-item
