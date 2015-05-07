@@ -73,7 +73,7 @@ module.exports = function (grunt) {
       },
       compass: {
         files: ['<%= yeoman.app %>/<%= yeoman.styles %>/**/*.{scss,sass}'],
-        tasks: ['compass:server', 'autoprefixer', 'newer:copy:tmp']
+        tasks: ['compass:server', 'autoprefixer', 'newer:copy:tmp', 'copy:styles']
       },
       gruntfile: {
         files: ['Gruntfile.js'],
@@ -161,7 +161,7 @@ module.exports = function (grunt) {
       }
     },
 
-    
+
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
       options: {
@@ -190,7 +190,7 @@ module.exports = function (grunt) {
         }
       }
     },
-    
+
 
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
@@ -549,7 +549,7 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
-  grunt.registerTask('coverage', 
+  grunt.registerTask('coverage',
     ['karma:continuous',
     'connect:coverage:keepalive'
   ]);

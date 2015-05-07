@@ -3,6 +3,7 @@
 app.controller('BarcodeCtrl', function($scope,
                                        $ionicPlatform,
                                        $cordovaBarcodeScanner,
+                                       $state,
                                        scan) {
 
   $scope.launchScanner = function() {
@@ -18,10 +19,14 @@ app.controller('BarcodeCtrl', function($scope,
           });
       });
     } else {
-      // console.log('starting scan..');
-      scan.add('EAN_13', '9781607740551')
-        .then(function() {
-          // console.log(newBook);
+      scan.add('EAN_13', '9780937381885')
+        .then(function(newBook) {
+          // go to state
+          $state.go('scanView', { 'scanUUID' : newBook.uuid });
+        },
+        function(reason) {
+          // reject reason
+          console.log('rejected: ', reason);
         });
     }
   };
